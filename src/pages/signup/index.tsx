@@ -3,10 +3,13 @@ import Footer from "components/Footer";
 import Header from "components/Header";
 
 export default function SignupPage() {
+
     return (
-        <div className="">
+        <div className="page">
             <Header/>
-            singhup
+            <main className="main">
+                sighup
+            </main>
             <Footer/>
         </div>
     )

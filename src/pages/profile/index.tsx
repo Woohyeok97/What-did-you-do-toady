@@ -3,10 +3,13 @@ import Footer from "components/Footer";
 import Header from "components/Header";
 
 export default function ProfilePage() {
+    
     return (
-        <div className="">
+        <div className="page">
             <Header/>
-            profile
+            <main className="main">
+                profile
+            </main>
             <Footer/>
         </div>
     )

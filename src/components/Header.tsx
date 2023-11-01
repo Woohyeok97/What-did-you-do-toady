@@ -1,7 +1,24 @@
+import { Link, useNavigate } from 'react-router-dom'
+import { IoTodaySharp } from 'react-icons/io5'
+import { BsSunFill, BsMoonFill } from 'react-icons/bs'
+import { BiSolidUser } from 'react-icons/bi'
+
 export default function Header() {
+    const navigate = useNavigate()
+ 
     return (
-        <header className="">
-            header입니다.
+        <header className="header">
+            <Link to="/">
+                <div className="header__logo">
+                    <IoTodaySharp/>
+                    <span>오늘 뭐했음?</span>
+                </div>
+            </Link>
+
+            <div className="header__menu">
+                <BiSolidUser onClick={()=>{ navigate('/profile') }}/>
+                <BsSunFill/>
+            </div>
         </header>
     )
 }
