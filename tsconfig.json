@@ -24,7 +24,9 @@
   "include": [
     "src"
   ],
-  "path" : [
-    
-  ]
+  "paths" : {
+    "pages/*" : ["pages/*"],
+    "components/*" : ["components/*"],
+    "context/*" : ["context/*"],
+  }
 }
