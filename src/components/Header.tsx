@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { IoTodaySharp } from 'react-icons/io5'
 import { BsSunFill, BsMoonFill } from 'react-icons/bs'
-import { BiSolidUser } from 'react-icons/bi'
+import { BiSolidUser, BiSolidPencil } from 'react-icons/bi'
 
 export default function Header() {
     const navigate = useNavigate()
@@ -16,6 +16,7 @@ export default function Header() {
             </Link>
 
             <div className="header__menu">
+                <BiSolidPencil onClick={()=>{ navigate('/new') }}/>
                 <BiSolidUser onClick={()=>{ navigate('/profile') }}/>
                 <BsSunFill/>
             </div>

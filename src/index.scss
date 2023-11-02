@@ -89,6 +89,27 @@ p {
     margin: 0 auto;
 }
 
+// 포스트프로필
+.post__profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: calc(16px + 2px);
+
+    .post__user-image {
+        width: 40px;
+        height: 40px;
+        background-color: darkgray;
+        border-radius: 50%;
+    }
+    .post__user-name {
+        font-weight: 500;
+    }
+    .post__create-date {
+        color: gray
+    }
+}
+
 // 포스트 리스트
 .post__list {
     
@@ -106,10 +127,10 @@ p {
             transition: all 0.2s linear;
             cursor: pointer;
         }
-        .post__navigation-item--active {
+        .post__category--active {
             color: black;
         }
-        .post__navigation-item {
+        .post__category {
             color: darkgray;
 
             &:hover {
@@ -122,26 +143,6 @@ p {
         padding: 20px 0;
         border-top: 0.5px solid darkgray;
         cursor: pointer;
-
-        .post__profile {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: calc(16px + 2px);
-
-            .post__user-image {
-                width: 40px;
-                height: 40px;
-                background-color: darkgray;
-                border-radius: 50%;
-            }
-            .post__user-name {
-                font-weight: 500;
-            }
-            .post__create-date {
-                color: gray
-            }
-        }
 
         .post__text {
             
@@ -176,5 +177,108 @@ p {
 
 // 포스트디테일
 .detail {
-    
+    margin-top: 40px;
+
+    .detail__header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+
+
+        .detail__category {
+            color: gray;
+            font-size: calc(16px + 2px);
+            font-weight: 600;
+            border: 1px solid darkgray;
+            border-radius: 10px;
+            padding: 5px 10px;
+        }
+        .detail__title {
+            font-size: calc(30px + 2px);
+            margin: 0;
+        }
+    }
+    .detail__profile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 0.5px solid darkgray;
+
+        .detail__util {
+            display: flex;
+            gap: 10px;
+
+            .detail__edit, .detail__delete {
+                color: darkgray;
+                transition: all 0.2s linear;
+                cursor: pointer;
+
+                &:hover {
+                    color: gray;
+                }
+            }
+        }
+    }
+    .detail__content {
+        font-size: calc(18px + 2px);
+        margin: 30px 0;
+    }
+}
+
+// 포스트 폼
+.form {
+    margin-top: 40px;
+
+    .form__block {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+
+        label {
+            font-size: calc(20px + 2px);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 10px;
+            box-sizing: border-box;
+            font-size: calc(16px + 4px);
+            border: 1px solid lightgray;
+            border-radius: 10px;
+            height: 40px;
+        }
+
+        select {
+            height: 40px;
+            padding: 10px;
+            font-size: calc(16px + 4px);
+            border: 1px solid lightgray;
+            border-radius: 10px;
+        }
+
+        textarea {
+            padding: 10px;
+            font-size: calc(16px + 4px);
+            border: 1px solid lightgray;
+            border-radius: 10px;
+            min-height: 400px;
+        }
+
+        .form__btn {
+            width: 100%;
+            height: 50px;
+            margin: 0 auto;
+            font-weight: 500;
+            background-color: #2563eb;
+            transition: all 0.2s linear;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #5181e9;
+            }
+        }
+    }
 }
