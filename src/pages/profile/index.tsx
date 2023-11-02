@@ -1,6 +1,7 @@
 // components
 import Footer from "components/Footer";
 import Header from "components/Header";
+import Profile from "components/Profile";
 
 export default function ProfilePage() {
     
@@ -8,7 +9,7 @@ export default function ProfilePage() {
         <div className="page">
             <Header/>
             <main className="main">
-                profile
+                <Profile/>
             </main>
             <Footer/>
         </div>

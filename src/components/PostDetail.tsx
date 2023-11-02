@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 // compoents
 import PostProfile from "./PostProfile"
 
@@ -13,7 +14,7 @@ export default function PostDetail() {
             <div className="detail__profile">
                 <PostProfile/>
                 <div className="detail__util">
-                    <div className="detail__edit">수정</div>
+                    <Link to={`/edit/1`} className="detail__edit">수정</Link>
                     <div className="detail__delete">삭제</div>
                 </div>
             </div>

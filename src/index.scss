@@ -86,7 +86,8 @@ p {
     min-height: 90vh;
     max-width: 680px;
     padding: 0 20px;
-    margin: 0 auto;
+    margin: 40px auto 0;
+
 }
 
 // 포스트프로필
@@ -177,7 +178,6 @@ p {
 
 // 포스트디테일
 .detail {
-    margin-top: 40px;
 
     .detail__header {
         display: flex;
@@ -281,4 +281,49 @@ p {
             }
         }
     }
+}
+
+// 프로필
+.profile {
+    
+
+    .profile__box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 80px;
+
+        .profile__user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+    
+            .profile__image {
+                width: 60px;
+                height: 60px;
+                background-color: darkgray;
+                border-radius: 50%;
+            }
+            .profile__email {
+                font-size: calc(20px + 2px);
+                font-weight: 600;
+            }
+        }
+        .profile__signout {
+            color: darkgray;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
+    .profile__posts {
+
+        .profile__posts-header {
+            font-size: calc(24px + 2px);
+            font-weight: 600;
+            margin: 20px 0 0;
+        }
+    }
+    
+    
 }
