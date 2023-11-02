@@ -15,6 +15,13 @@ export default function Header() {
                 </div>
             </Link>
 
+            {/* 임시링크임 */}
+            <div>
+                <Link to="/signin">로그인</Link>
+                <span> | </span>
+                <Link to="/signup">회원가입</Link>
+            </div>
+
             <div className="header__menu">
                 <BiSolidPencil onClick={()=>{ navigate('/new') }}/>
                 <BiSolidUser onClick={()=>{ navigate('/profile') }}/>

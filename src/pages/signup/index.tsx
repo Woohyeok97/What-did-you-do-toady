@@ -1,6 +1,7 @@
 // components
 import Footer from "components/Footer";
 import Header from "components/Header";
+import SignupForm from "components/SignupForm";
 
 export default function SignupPage() {
 
@@ -8,7 +9,7 @@ export default function SignupPage() {
         <div className="page">
             <Header/>
             <main className="main">
-                sighup
+                <SignupForm/>
             </main>
             <Footer/>
         </div>

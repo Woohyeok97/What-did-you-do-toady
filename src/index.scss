@@ -84,7 +84,7 @@ p {
 // main
 .main {
     min-height: 90vh;
-    max-width: 680px;
+    max-width: 800px;
     padding: 0 20px;
     margin: 40px auto 0;
 
@@ -116,11 +116,11 @@ p {
     
     .post__navigation {
         display: flex;
-        gap: 20px;
+        gap: 15px;
         padding: 20px 0;
 
         span {
-            font-size: calc(20px + 2px);
+            font-size: calc(16px + 2px);
             font-weight: 600;
             border: 1px solid darkgray;
             border-radius: 10px;
@@ -227,7 +227,7 @@ p {
     }
 }
 
-// 포스트 폼
+// 공용 폼
 .form {
     margin-top: 40px;
 
@@ -243,17 +243,17 @@ p {
         }
 
         input {
-            padding: 10px;
+            height: 50px;
+            padding: 15px;
             box-sizing: border-box;
             font-size: calc(16px + 4px);
             border: 1px solid lightgray;
             border-radius: 10px;
-            height: 40px;
         }
 
         select {
-            height: 40px;
-            padding: 10px;
+            height: 50px;
+            padding: 15px;
             font-size: calc(16px + 4px);
             border: 1px solid lightgray;
             border-radius: 10px;
@@ -324,6 +324,48 @@ p {
             margin: 20px 0 0;
         }
     }
-    
-    
+}
+
+// 회원가입 폼
+.signup {
+
+    h1 {
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .signin {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        font-size: calc(16px + 2px);
+        font-weight: 500;
+
+        .signin__link {
+            color: gray;
+            text-decoration: underline;
+        }
+    }
+}
+
+// 로그인 폼
+.signin {
+
+    h1 {
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .signup {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        font-size: calc(16px + 2px);
+        font-weight: 500;
+
+        .signup__link {
+            color: gray;
+            text-decoration: underline;
+        }
+    }
 }
