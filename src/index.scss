@@ -17,10 +17,10 @@ a {
     text-decoration: none;
     color: inherit;
 }
-
-p {
+p, h1 {
     margin: 0;
 }
+
 
 // page
 .page {
@@ -227,9 +227,15 @@ p {
     }
 }
 
+// 포스트 작성
+.post__form {
+    h1 {
+        text-align: center;
+    }
+}
+
 // 공용 폼
 .form {
-    margin-top: 40px;
 
     .form__block {
         display: flex;
@@ -337,7 +343,6 @@ p {
 
     h1 {
         text-align: center;
-        margin-bottom: 0;
     }
 
     .signin {
@@ -359,7 +364,6 @@ p {
 
     h1 {
         text-align: center;
-        margin-bottom: 0;
     }
 
     .signup {

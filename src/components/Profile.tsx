@@ -12,7 +12,7 @@ export default function Profile() {
     const { user } = useContext(AuthContext)
 
     const onClick = async () => {
-        const auth = getAuth(app)
+        const auth = getAuth(app);
 
         try {
             await signOut(auth)
@@ -27,7 +27,7 @@ export default function Profile() {
             <div className="profile__box">
                 <div className="profile__user">
                     <div className="profile__image"></div>
-                    <div className="profile__email">qordngur@naver.com</div>
+                    <div className="profile__email">{ user?.email }</div>
                 </div>
                 <div className="profile__signout" onClick={ onClick }>
                     로그아웃

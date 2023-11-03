@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import PostProfile from "./PostProfile";
 
 // 카테고리 타입
-type CategoryType = '전체글' | '자랑' | '반성' | '뻘글' | '살려줘'
+export type CategoryType = '전체글' | '자랑' | '반성' | '뻘글' | '살려줘'
 // 카테고리 리스트를 상수로 관리(카테고리 리스트 자체는 자주 변경되지않으니까ㅎ)
-const CATEGORYS : CategoryType[] = ['전체글', '자랑', '반성', '뻘글', '살려줘'] 
+export const CATEGORYS : CategoryType[] = ['전체글', '자랑', '반성', '뻘글', '살려줘'] 
 
 export default function PostList() {
     // 현재 active된 카테고리를 상태로 관리
