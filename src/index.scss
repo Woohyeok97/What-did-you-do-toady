@@ -81,6 +81,17 @@ p, h1 {
     background-color: gray;
 }
 
+// Loader
+.loader {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(40px + 2px);
+    font-weight: 600;
+}
+
 // main
 .main {
     min-height: 90vh;
@@ -89,6 +100,7 @@ p, h1 {
     margin: 40px auto 0;
 
 }
+
 
 // 포스트프로필
 .post__profile {

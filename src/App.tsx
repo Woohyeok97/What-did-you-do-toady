@@ -3,8 +3,9 @@ import AuthContext from "context/AuthContext";
 // toastify 컨테이너 & css파일
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
+// components
 import Router from "Router";
+import Loader from "components/Loader";
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
 
     return (
         <div>
-            { init ? <Router isAuthenticated={ user ? true : false }/> : '기다려~' }
+            { init ? <Router isAuthenticated={ user ? true : false }/> : <Loader/> }
             <ToastContainer/>
         </div>
     )

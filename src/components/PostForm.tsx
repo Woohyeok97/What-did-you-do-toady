@@ -9,8 +9,8 @@ import { db } from "firebaseApp"
 import { dateChangtoLocal } from 'utils/formatDate'
 
 
-// postData 타입정의
-interface PostDataType {
+// FormData 타입정의
+interface FormDataType {
     title : string,
     category : CategoryType,
     content : string,
@@ -20,7 +20,7 @@ export default function PostForm() {
     const { id } = useParams()
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
-    const [ postData, setPostData ] = useState<PostDataType>({
+    const [ formData, setFormData ] = useState<FormDataType>({
         title : '',
         category : '뻘글',
         content : '',
@@ -29,14 +29,14 @@ export default function PostForm() {
     // postData 핸들러
     const onChange = (e : React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
-        setPostData((prev) => ({ ...prev, [name] : value }))
+        setFormData((prev) => ({ ...prev, [name] : value }))
     }
 
     // 글작성 & 글수정 요청
     const onSubmit = async (e : React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         // postData 유효성 검사
-        const { title, category, content } = postData
+        const { title, category, content } = formData
         if(!title || !category || !content) {
             toast.warning('입력을 확인해주세요.')
             return
@@ -46,7 +46,7 @@ export default function PostForm() {
             // post 업로드(user.uid가 있을때만)
             if(user?.uid) {
                 const docObject = {
-                    ...postData,
+                    ...formData,
                     email : user?.email,
                     uid : user?.uid,
                     createdAt : dateChangtoLocal(),
@@ -67,18 +67,23 @@ export default function PostForm() {
             <form onSubmit={ onSubmit } className="form">
                 <div className="form__block">
                     <label htmlFor="">제목</label>
-                    <input name="title" id="title" onChange={ onChange } value={ postData?.title }/>
+                    <input name="title" id="title" onChange={ onChange } value={ formData?.title }/>
                 </div>
+                
                 <div className="form__block">
                     <label htmlFor="category">카테고리</label>
-                    <select name="category" id="category" onChange={ onChange } defaultValue={ postData?.category }>
-                    { CATEGORYS.map((item) => <option value={item} key={item}>{ item }</option>) }
+                    <select name="category" id="category" onChange={ onChange } defaultValue={ formData?.category }>
+                    {/* 카테고리 요소중 '전체글'은 제외하고 렌더링하기 */}
+                    { CATEGORYS.map((item) => item !== '전체글' && 
+                        <option value={item} key={item}>{ item }</option>) }
                     </select>
                 </div>
+
                 <div className="form__block">
                     <label htmlFor="content">내용</label>
-                    <textarea name="content" id="content" spellCheck="false" onChange={ onChange } value={ postData?.content }/>
+                    <textarea name="content" id="content" spellCheck="false" onChange={ onChange } value={ formData?.content }/>
                 </div>
+
                 <div className="form__block">
                     <input type="submit" value={ id ? "수정" : "작성" } className="form__btn"/>
                 </div>
