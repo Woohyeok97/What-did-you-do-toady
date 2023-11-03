@@ -266,6 +266,12 @@ p {
             border-radius: 10px;
             min-height: 400px;
         }
+        .error-message {
+            margin-bottom: 20px;
+            font-size: calc(16px + 2px);
+            font-weight: 500;
+            color: orangered;
+        }
 
         .form__btn {
             width: 100%;

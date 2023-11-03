@@ -1,9 +1,14 @@
+import { useContext } from 'react'
+import AuthContext from 'context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
+// react-icons
 import { IoTodaySharp } from 'react-icons/io5'
 import { BsSunFill, BsMoonFill } from 'react-icons/bs'
 import { BiSolidUser, BiSolidPencil } from 'react-icons/bi'
 
+
 export default function Header() {
+    const { user } = useContext(AuthContext)
     const navigate = useNavigate()
  
     return (
@@ -15,16 +20,11 @@ export default function Header() {
                 </div>
             </Link>
 
-            {/* 임시링크임 */}
-            <div>
-                <Link to="/signin">로그인</Link>
-                <span> | </span>
-                <Link to="/signup">회원가입</Link>
-            </div>
-
             <div className="header__menu">
-                <BiSolidPencil onClick={()=>{ navigate('/new') }}/>
-                <BiSolidUser onClick={()=>{ navigate('/profile') }}/>
+                {/* 로그인 상태일때만 글작성 페이지로 이동할수있음 */}
+                { user && <BiSolidPencil onClick={()=>{ navigate('/new') }}/> }
+                {/* 로그인 상태라면 프로필페이지로, 없다면 로그인페이지로 */}
+                <BiSolidUser onClick={()=>{ navigate(user ? '/profile' : '/signin') }}/>
                 <BsSunFill/>
             </div>
         </header>
