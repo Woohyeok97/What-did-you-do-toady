@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "context/AuthContext";
 import { Link } from "react-router-dom";
-import { collection, doc, getDocs, orderBy, query, where } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "firebaseApp";
 // compoents
 import PostProfile from "./PostProfile";
+import { toast } from "react-toastify";
 
 
 // 카테고리 타입
@@ -35,7 +36,6 @@ export default function PostList({ profile = false } : PostListProps) {
 
     // firestore에서 posts 가져오기 
     const fetchPosts = async () => {
-    
         try {
             const postsRef = collection(db, 'posts')
             let postsQuery;
@@ -71,11 +71,31 @@ export default function PostList({ profile = false } : PostListProps) {
             console.log(err)
         }
     }
-    
 
+    // firestore에서 포스트 삭제하기
+    const handleDeletePost = async (postUid : string, postId : string | undefined) => {
+        const confirm = window.confirm('포스트를 삭제할까요?')
+
+        try {
+            // 로그인중인 유저의 uid와 해당 포스트의 uid가 같은지 확인
+            if(confirm && user?.uid === postUid && postId) {
+                await deleteDoc(doc(db, 'posts', postId))
+                // 포스트 삭제후, 다시 포스트 가져오기
+                await fetchPosts()
+
+                toast.success('포스트를 삭제하였습니다.')
+            }
+            
+        } catch(err : any) {
+            toast.error(err?.code)
+        }
+    }
+    
+    // activeCategory가 바뀔때마다 fetchPost()실행
     useEffect(() => {
         fetchPosts()
     }, [activeCategory])
+
 
     return (
         <div className="post__list">
@@ -98,7 +118,9 @@ export default function PostList({ profile = false } : PostListProps) {
                 { item?.uid === user?.uid && // post의 uid와 현재 user의 uid가 같을때만 렌더링
                 <div className="post__util">
                     <Link to={`/edit/${item?.id}`} className="post__edit">수정</Link>
-                    <div className="post__delete">삭제</div>
+                    <div className="post__delete" onClick={()=>{ handleDeletePost(item?.uid, item?.id) }}>
+                        삭제
+                    </div>
                 </div> }
             </div> ) : <div>아직 포스트가 없습니다.</div> }
         </div>
