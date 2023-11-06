@@ -35,7 +35,7 @@ export default function Profile() {
             </div>
             <div className="profile__posts">
                 <div className="profile__posts-header">나의 작성글</div>
-                <PostList/>
+                <PostList profile={true}/>
             </div>
         </div>
     )
