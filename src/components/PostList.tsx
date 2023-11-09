@@ -76,18 +76,22 @@ export default function PostList({ profile = false } : PostListProps) {
     const handleDeletePost = async (postUid : string, postId : string | undefined) => {
         const confirm = window.confirm('포스트를 삭제할까요?')
 
-        try {
-            // 로그인중인 유저의 uid와 해당 포스트의 uid가 같은지 확인
-            if(confirm && user?.uid === postUid && postId) {
-                await deleteDoc(doc(db, 'posts', postId))
+        // user?.uid 유효성 검사
+        if(postUid !== user?.uid) {
+            toast.error('너 누구야')
+            return
+        }
+        // 컨펌되고, post?.id가 있을경우에만 로직실행
+        if(confirm && postId) {
+            try {
                 // 포스트 삭제후, 다시 포스트 가져오기
+                await deleteDoc(doc(db, 'posts', postId))
                 await fetchPosts()
-
                 toast.success('포스트를 삭제하였습니다.')
+                
+            } catch(err : any) {
+                toast.error(err?.code)
             }
-            
-        } catch(err : any) {
-            toast.error(err?.code)
         }
     }
     

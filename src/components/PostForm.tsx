@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from "react"
-import AuthContext from "context/AuthContext"
 import { useNavigate, useParams } from "react-router-dom"
-import { CATEGORYS, CategoryType, PostDataType } from "./PostList"
+import AuthContext from "context/AuthContext"
 import { toast } from "react-toastify"
 import { addDoc, collection, doc, getDoc, updateDoc } from "firebase/firestore"
 import { db } from "firebaseApp"
+// 데이터타입
+import { CATEGORYS, CategoryType, PostDataType } from "./PostList"
 // 유틸함수
 import { dateChangtoLocal } from 'utils/formatDate'
 
@@ -105,6 +106,7 @@ export default function PostForm() {
     useEffect(() => {
         // 가져온 post의 uid와 로그인중인 uid가 같은경우(먼저 prevPost와 user가 준비되고 나서!)
         if(prevPost && user) {
+            // user?.uid 유효성 검사(여기서는 핸들러가 아닌, useEffect에서 유효성검사 실시)
             if(prevPost?.uid === user?.uid) {
                 const changed = {
                     title : prevPost?.title,
